@@ -22,7 +22,7 @@ services:
         aliases:
           - emulator
     environment:
-      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:443?transport=tcp","username":"f795796a4944aea6389d4374a53ec9675609d04d559a612e2eaf0ce9f0f81aed","credential":"R+F0fCGB+YliVSA418nsFfv86GK4cTlbgyD4jobayKg="}]}
+      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=udp","username":"f795796a4944aea6389d4374a53ec9675609d04d559a612e2eaf0ce9f0f81aed","credential":"R+F0fCGB+YliVSA418nsFfv86GK4cTlbgyD4jobayKg="}]}
     devices: [/dev/kvm]
     shm_size: 128M
     expose:
