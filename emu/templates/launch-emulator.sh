@@ -220,7 +220,7 @@ var_append LAUNCH_CMD -skip-adb-auth -no-snapshot-save -wipe-data -no-boot-anim
 var_append LAUNCH_CMD -shell-serial file:/tmp/android-unknown/kernel.log
 var_append LAUNCH_CMD -logcat-output /tmp/android-unknown/logcat.log
 var_append LAUNCH_CMD -feature AllowSnapshotMigration
-var_append LAUNCH_CMD -gpu swiftshader_indirect {{extra}}
+var_append LAUNCH_CMD -gpu host {{extra}}
 
 if [ ! -z "${EMULATOR_PARAMS}" ]; then
   var_append LAUNCH_CMD $EMULATOR_PARAMS
