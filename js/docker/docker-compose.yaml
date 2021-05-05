@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 services:
   front-envoy:
     image: emulator_envoy:latest
@@ -6,13 +6,13 @@ services:
     networks:
       - envoymesh
     expose:
-      - "8080"
-      - "8001"
-      - "8443"
+      - '8080'
+      - '8001'
+      - '8443'
     ports:
-      - "80:8080"
-      - "443:8443"
-      - "8001:8001"
+      - '80:8080'
+      - '443:8443'
+      - '8001:8001'
 
   emulator:
     image: emulator_emulator:latest
@@ -22,11 +22,14 @@ services:
         aliases:
           - emulator
     environment:
-      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=udp","username":"f795796a4944aea6389d4374a53ec9675609d04d559a612e2eaf0ce9f0f81aed","credential":"R+F0fCGB+YliVSA418nsFfv86GK4cTlbgyD4jobayKg="}]}
+      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"d984d4740c12c2d6421704ff2c40c0f6652fb11301c3209738cc50afe3c5f530","credential":"j04Gt2+ravkNh9JVzLbbrbjkeDT7e5MBJl1t+s+7Ml8="}]}
     devices: [/dev/kvm]
+    gpus: all
     shm_size: 128M
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
     expose:
-      - "8554"
+      - '8554'
 
   jwt_signer:
     image: emulator_jwt_signer:latest
@@ -36,7 +39,7 @@ services:
         aliases:
           - jwt_signer
     expose:
-      - "8080"
+      - '8080'
 
   nginx:
     image: emulator_nginx:latest
@@ -46,8 +49,7 @@ services:
         aliases:
           - nginx
     expose:
-      - "80"
+      - '80'
 
 networks:
   envoymesh: {}
-
