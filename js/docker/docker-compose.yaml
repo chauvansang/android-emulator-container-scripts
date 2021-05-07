@@ -22,8 +22,8 @@ services:
         aliases:
           - emulator
     environment:
-      - DISPLAY
-      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"d984d4740c12c2d6421704ff2c40c0f6652fb11301c3209738cc50afe3c5f530","credential":"j04Gt2+ravkNh9JVzLbbrbjkeDT7e5MBJl1t+s+7Ml8="}]}
+      - DISPLAY=:0
+      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"e27098fc9f94798b643109ab84f040a1d8cae654bfefb2ad220ee97d18641c91","credential":"agMbuOL2p5YMDH+jGV7L2i1SZxnF+MQ07xWGdYwMg+I="}]}
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
     devices: [/dev/kvm]
