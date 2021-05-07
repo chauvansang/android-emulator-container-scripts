@@ -25,8 +25,6 @@ services:
     environment:
       - DISPLAY
       - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"e27098fc9f94798b643109ab84f040a1d8cae654bfefb2ad220ee97d18641c91","credential":"agMbuOL2p5YMDH+jGV7L2i1SZxnF+MQ07xWGdYwMg+I="}]}
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
     devices: [/dev/kvm]
     shm_size: 128M
     volumes:
