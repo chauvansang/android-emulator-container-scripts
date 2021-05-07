@@ -29,9 +29,7 @@ services:
           - emulator
     environment:
       - DISPLAY
-      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"e27098fc9f94798b643109ab84f040a1d8cae654bfefb2ad220ee97d18641c91","credential":"agMbuOL2p5YMDH+jGV7L2i1SZxnF+MQ07xWGdYwMg+I="}]}
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"fdee1f65c51e254c806ce33d8629954591e49c3dcf6bf79efc60d6bd8373c37a","credential":"8+d22o7u+aMxCCx9P2eHFj4RVbj4eQZXpiS5hn9w4N8="}]}
     devices: [/dev/kvm]
     shm_size: 128M
     volumes:
