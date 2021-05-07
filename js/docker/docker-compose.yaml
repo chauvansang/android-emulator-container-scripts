@@ -17,13 +17,7 @@ services:
   emulator:
     image: emulator_emulator:latest
     container_name: emulator_emulator
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              device_ids: ['0']
-              capabilities: [gpu]
+    runtime: nvidia
     networks:
       envoymesh:
         aliases:

@@ -22,13 +22,7 @@ services:
       context: ../../src
       dockerfile: Dockerfile
       shm_size: 128M
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              device_ids: ['0']
-              capabilities: [gpu]
+    runtime: nvidia
     networks:
       envoymesh:
         aliases:
