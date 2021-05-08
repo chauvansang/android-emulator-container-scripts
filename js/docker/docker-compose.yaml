@@ -24,7 +24,7 @@ services:
           - emulator
     environment:
       - DISPLAY
-      - TURN=printf {"iceServers":[{"urls":"turn:coturn.engineering.vng.vn:3478?transport=tcp","username":"sangcv","credential":"Aa123456"}]}
+      - TURN=printf {"iceServers":[{"urls":"turn:172.26.24.40:3478?transport=tcp","username":"sangcv","credential":"Aa123456"}]}
     devices: [/dev/kvm]
     shm_size: 128M
     volumes:
