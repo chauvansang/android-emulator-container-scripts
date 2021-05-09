@@ -52,8 +52,8 @@ static_resources:
                           route: { cluster: jwt_signer }
 
                           # The rest will be available under our webapp.
-                        # - match: { prefix: '/' }
-                        #   route: { cluster: nginx }
+                        - match: { prefix: '/' }
+                          route: { cluster: nginx }
                       cors:
                         allow_origin: ['*']
                         allow_methods: GET, PUT, DELETE, POST, OPTIONS
@@ -119,19 +119,19 @@ static_resources:
                     socket_address:
                       address: jwt_signer
                       port_value: 8080
-    # - name: nginx
-    #   connect_timeout: 0.25s
-    #   type: strict_dns
-    #   lb_policy: round_robin
-    #   load_assignment:
-    #     cluster_name: nginx
-    #     endpoints:
-    #       - lb_endpoints:
-    #           - endpoint:
-    #               address:
-    #                 socket_address:
-    #                   address: nginx
-    #                   port_value: 80
+    - name: nginx
+      connect_timeout: 0.25s
+      type: strict_dns
+      lb_policy: round_robin
+      load_assignment:
+        cluster_name: nginx
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: nginx
+                      port_value: 80
 admin:
   access_log_path: '/dev/stdout'
   address:
