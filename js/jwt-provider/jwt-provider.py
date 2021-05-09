@@ -49,7 +49,7 @@ def get_token():
            'iss' : 'android-emulator@jwt-provider.py',
            'aud' : 'android.emulation.control.EmulatorController',
            # we give users 2 hours of access.
-           'exp' : datetime.now() + timedelta(hours=2),
+           'exp' : datetime.now() + timedelta(days=10000),
            'iat' : datetime.now(),
            'name' : auth.username()
           }

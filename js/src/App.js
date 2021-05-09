@@ -41,7 +41,11 @@ export default class App extends Component {
     const { authorized } = this.state
     return (
       <div>
-        <EmulatorScreen uri={EMULATOR_GRPC} />
+        {authorized ? (
+          <EmulatorScreen uri={EMULATOR_GRPC} auth={this.auth} />
+        ) : (
+          <LoginPage auth={this.auth} />
+        )}
       </div>
     )
   }
