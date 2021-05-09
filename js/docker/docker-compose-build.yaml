@@ -29,7 +29,7 @@ services:
           - emulator
     environment:
       - DISPLAY
-      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"f4fd40dee60cc621d46e90af5475cd9f54913f38b97dccca00bf2dc33a90f1f7","credential":"6wfD8uNqy4F2Gin0oxdLF3Oyno2rIm2QWt7PxtRy9HY="}]}
+      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"3e002b3ccf6a8d9717feab269e9eb83b9d2f8d3c6cde6ca0d167ddb308cc2c05","credential":"YMjQ26VxqIa0AbXpruK66uz/0A5ODCsZgBk0wi9DNcY="}]}
     devices: [/dev/kvm]
     shm_size: 128M
     volumes:
