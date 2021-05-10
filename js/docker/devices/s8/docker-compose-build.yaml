@@ -1,0 +1,67 @@
+version: '3.7'
+services:
+  front-envoy:
+    image: emulator_envoy:latest
+    build:
+      context: .
+      dockerfile: envoy.Dockerfile
+    networks:
+      - envoymesh
+    expose:
+      - '8080'
+      - '8001'
+      - '8443'
+    ports:
+      - '8081:8080'
+      - '8444:8443'
+      - '8002:8001'
+
+  emulator:
+    image: emulator_emulator:latest
+    build:
+      context: ../../src
+      dockerfile: Dockerfile
+      shm_size: 128M
+    runtime: nvidia
+    networks:
+      envoymesh:
+        aliases:
+          - emulator
+    environment:
+      - DISPLAY
+      - TURN=printf {"iceServers":[{"urls":"turn:global.turn.twilio.com:3478?transport=tcp","username":"3e002b3ccf6a8d9717feab269e9eb83b9d2f8d3c6cde6ca0d167ddb308cc2c05","credential":"YMjQ26VxqIa0AbXpruK66uz/0A5ODCsZgBk0wi9DNcY="}]}
+    devices: [/dev/kvm]
+    shm_size: 128M
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    expose:
+      - '8554'
+
+  jwt_signer:
+    image: emulator_jwt_signer:latest
+    build:
+      context: ../jwt-provider
+      dockerfile: Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - jwt_signer
+    expose:
+      - '8080'
+
+  nginx:
+    image: emulator_nginx:latest
+    build:
+      context: ..
+      dockerfile: docker/nginx.Dockerfile
+    networks:
+      envoymesh:
+        aliases:
+          - nginx
+    expose:
+      - '80'
+
+networks:
+  envoymesh:
+    external:
+      name: envoymesh
