@@ -64,4 +64,4 @@ services:
 networks:
   envoymesh:
     external:
-      name: envoymesh
+      name: envoymesh-samsung

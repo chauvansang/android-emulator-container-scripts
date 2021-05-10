@@ -2,7 +2,7 @@ version: '3.7'
 services:
   front-envoy:
     image: emulator_envoy:latest
-    container_name: emulator_envoy_samsung
+    container_name: emulator_envoy
     networks:
       - envoymesh
     expose:
@@ -16,7 +16,7 @@ services:
 
   emulator:
     image: emulator_emulator:latest
-    container_name: emulator_emulator_samsung
+    container_name: emulator_emulator
     runtime: nvidia
     networks:
       envoymesh:
@@ -34,7 +34,7 @@ services:
 
   jwt_signer:
     image: emulator_jwt_signer:latest
-    container_name: emulator_jwt_signer_samsung
+    container_name: emulator_jwt_signer
     networks:
       envoymesh:
         aliases:
@@ -44,7 +44,7 @@ services:
 
   nginx:
     image: emulator_nginx:latest
-    container_name: emulator_nginx_samsung
+    container_name: emulator_nginx
     networks:
       envoymesh:
         aliases:
@@ -55,4 +55,4 @@ services:
 networks:
   envoymesh:
     external:
-      name: envoymesh-samsung
+      name: envoymesh
