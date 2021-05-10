@@ -52,12 +52,14 @@ static_resources:
                           route: { cluster: jwt_signer }
 
                           # The rest will be available under our webapp.
+                        # - match: { prefix: '/' }
+                        #   route:
+                        #     {
+                        #       cluster: emulator_service_grpc,
+                        #       timeout: { seconds: 0 },
+                        #     }
                         - match: { prefix: '/' }
-                          route:
-                            {
-                              cluster: emulator_service_grpc,
-                              timeout: { seconds: 0 },
-                            }
+                          route: { cluster: nginx }
                       cors:
                         allow_origin:
                           - '*'
