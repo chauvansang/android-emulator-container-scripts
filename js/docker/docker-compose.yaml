@@ -29,6 +29,8 @@ services:
     shm_size: 128M
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+    tmpfs:
+      - /data:size=8G
     expose:
       - '8554'
 
