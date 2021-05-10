@@ -15,7 +15,7 @@
 FROM envoyproxy/envoy:v1.12.0
 
 COPY ./envoy.yaml /etc/envoy/envoy.yaml
-ADD certs/engineering.vng.vn.pem /etc/cert.crt
-ADD certs/engineering.vng.vn.key /etc/key.key
+ADD certs/self_sign.crt /etc/cert.crt
+ADD certs/self_sign.key /etc/key.key
 ADD certs/jwt_secrets_pub.jwks /etc/jwt_secrets_pub.jwks
 CMD /usr/local/bin/envoy -c /etc/envoy/envoy.yaml
