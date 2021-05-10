@@ -52,14 +52,12 @@ static_resources:
                           route: { cluster: jwt_signer }
 
                           # The rest will be available under our webapp.
-                        - match: { prefix: '/' }
-                          route:
-                            {
-                              cluster: emulator_service_grpc,
-                              timeout: { seconds: 0 },
-                            }
                         # - match: { prefix: '/' }
-                        #   route: { cluster: nginx }
+                        #   route:
+                        #     cluster: emulator_service_grpc
+                        #     max_grpc_timeout: 0s
+                        - match: { prefix: '/' }
+                          route: { cluster: nginx }
                       cors:
                         allow_origin:
                           - '*'
@@ -87,8 +85,8 @@ static_resources:
                               prefix: '/android.emulation.control.EmulatorController',
                             }
                           requires: { provider_name: 'emulator-jwt' }
-                  - name: envoy.cors
                   - name: envoy.grpc_web
+                  - name: envoy.cors
                   - name: envoy.router
 
           # tls_context:
